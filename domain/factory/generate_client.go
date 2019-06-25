@@ -6,7 +6,7 @@ import (
 	"errors"
 )
 
-func GenerateClient(topic, payload, action string, qos, num int) (model.BaseClient, error) {
+func GenerateClient(topic string, qos int) (model.BaseClient, error) {
 	if qos != 0 && qos != 1 && qos != 2 {
 		return model.BaseClient{}, errors.New("Parameter error")
 	}
@@ -19,10 +19,6 @@ func GenerateClient(topic, payload, action string, qos, num int) (model.BaseClie
 		Password:     "public",
 		CleanSession: false,
 		Qos:          qos,
-		Num:          num,
-		Payload:      payload,
-		Action:       action,
-		Store:        ":memory:",
 	}
 	return newClient, nil
 }
