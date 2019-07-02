@@ -4,7 +4,6 @@ import (
 	"EMQ/domain/factory"
 	"fmt"
 	"github.com/eclipse/paho.mqtt.golang"
-	"os"
 )
 
 type MQttServices struct {
@@ -39,7 +38,7 @@ func (mQttSer MQttServices) Publish(msg string) error {
 	}
 	client := mqtt.NewClient(opts)
 	if token := client.Connect(); token.Wait() && token.Error() != nil {
-		panic(token.Error())
+		return token.Error()
 	}
 	fmt.Println(fmt.Sprintf("Sample Publisher Started: topic: %s, msg: %s", mQttSer.Topic, msg))
 	token := client.Publish(mQttSer.Topic, byte(mQttSer.Qos), false, msg)
@@ -68,11 +67,10 @@ func (mQttSer MQttServices) Subscribe(num int) error {
 	})
 	client := mqtt.NewClient(opts)
 	if token := client.Connect(); token.Wait() && token.Error() != nil {
-		panic(token.Error())
+		return token.Error()
 	}
 	if token := client.Subscribe(mQttSer.Topic, byte(mQttSer.Qos), nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
+		return token.Error()
 	}
 	for receiveCount < num {
 		incoming := <-choke

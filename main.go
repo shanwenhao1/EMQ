@@ -20,9 +20,15 @@ func main() {
 		Qos:   qos,
 	}
 	if action == "pub" {
-		mQttServices.Publish(string(payload))
+		err := mQttServices.Publish(string(payload))
+		if err != nil {
+			panic(err)
+		}
 	} else {
-		mQttServices.Subscribe(num)
+		err := mQttServices.Subscribe(num)
+		if err != nil {
+			panic(err)
+		}
 	}
 
 }

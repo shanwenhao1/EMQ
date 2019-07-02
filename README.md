@@ -8,9 +8,11 @@ EMQ X 是基于Erlang/OTP平台开发的开源物联网MQTT消息服务器. 是�
 
 [EMQ X消息服务器要点](doc/EMQ%20X%20read%20note.md)
 
-EMQ X 插件:
-- [web hook](doc/plugins/web%20hook.md)
-- [EMQX_AUTH_HTTP认证插件]()
+EMQ X 插件, [插件列表](http://docs.emqtt.cn/zh_CN/latest/plugins.html):
+- [ACL鉴权](doc/plugins/acl.md)
+    - 决定采用[EMQX_AUTH_HTTP认证插件](doc/plugins/emqx%20auth%20http.md)
+
+- [emq web hook](doc/plugins/web%20hook.md)
 
 
 [EMQ测试工具](https://www.jianshu.com/p/e5cf0c1fd55c)
