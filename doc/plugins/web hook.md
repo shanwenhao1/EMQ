@@ -7,7 +7,7 @@ emq的webhook插件使用很简单,只需要设置API的URL,再勾选要监控�
 可以将其改成可配置的软接口,也可以直接更改硬编码的接口.
 
 ```bash
-web.hook.api.url = http://192.168.1.94:8081
+web.hook.api.url = http://192.168.1.94:8081/mqtt/webhook
 
 ## Encode message payload field
 ##
